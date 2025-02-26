@@ -5,6 +5,7 @@
 *.a
 *.so
 *.dll
+*.env
 
 # Compiled packages
 /pkg
