@@ -5,7 +5,6 @@ import (
 	"strings"
 )
 
-// getToken extracts the token from the request headers.
 func getToken(r *http.Request) string {
 	auth := r.Header.Get("Authorization")
 	if strings.HasPrefix(auth, "Bearer ") {
@@ -14,7 +13,7 @@ func getToken(r *http.Request) string {
 	return ""
 }
 
-// getAssetName extracts the asset name from the request URL.
+// getAssetNam extracts the asset name from the request URL.
 func getAssetName(r *http.Request) string {
 	parts := strings.Split(r.URL.Path, "/")
 	if len(parts) > 2 {

@@ -83,7 +83,6 @@ func (pg *Postgres) DeleteAsset(ctx context.Context, userID int64, assetName str
 		return fmt.Errorf("failed to delete asset: %w", err)
 	}
 
-	// Проверяем, было ли удаление успешным
 	if rowsAffected := result.RowsAffected(); rowsAffected == 0 {
 		return fmt.Errorf("asset not found")
 	}

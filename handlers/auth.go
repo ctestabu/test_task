@@ -16,7 +16,6 @@ type AuthResponse struct {
 	Token string `json:"token"`
 }
 
-// AuthHandler processes login requests
 func AuthHandler(pgDB *storage.Postgres) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req struct {
@@ -35,13 +34,11 @@ func AuthHandler(pgDB *storage.Postgres) http.HandlerFunc {
 			return
 		}
 
-		// Удаляем старую сессию
 		if err := pgDB.DeleteUserSession(r.Context(), userID); err != nil {
 			http.Error(w, `{"error": "DeleteUserSession server error"}`, http.StatusInternalServerError)
 			return
 		}
 
-		// Создаем новую сессию
 		sessionID, err := pgDB.CreateSession(r.Context(), userID, r.RemoteAddr)
 		if err != nil {
 			http.Error(w, `{"error": "CreateSession server error"}`, http.StatusInternalServerError)
