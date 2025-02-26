@@ -1,0 +1,25 @@
+# Binaries
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+
+# Compiled packages
+/pkg
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Vendor (if using Go modules, you may include `vendor/` if you commit dependencies)
+vendor/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.iml
